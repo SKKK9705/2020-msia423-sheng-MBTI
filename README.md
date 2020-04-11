@@ -2,8 +2,8 @@
 
 <!-- toc -->
 
-### Developer: Skye Sheng
-### QA: Manish Kumar
+#### Developer: Skye Sheng
+#### QA: Manish Kumar
 - [Directory structure](#directory-structure)
 - [Running the app](#running-the-app)
   * [1. Initialize the database](#1-initialize-the-database)
