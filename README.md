@@ -1,4 +1,4 @@
-# MSiA423 Skye MBTI Personality Prediction
+# MSiA423 MBTI Personality Prediction
 
 <!-- toc -->
 
