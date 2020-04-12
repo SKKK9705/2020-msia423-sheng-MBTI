@@ -2,8 +2,8 @@
 
 <!-- toc -->
 
-#### Developer: Skye Sheng
-#### QA: Manish Kumar
+**Developer:** Skye Sheng
+**QA:** Manish Kumar
 - [Project Charter](#project-charter)
 - [Planning](#planning)
 - [Directory structure](#directory-structure)
@@ -36,24 +36,29 @@
 
 **Initiative 1: Build Model** 
 * Epic 1: Data Pre-processing  
-	* Story 1: Exam blog posts in the dataset 
- 	* Story 2: Delete unnecessary components (url,emoji,etc)
- 	* Story 3: Format the texts 
+	* Story 1 (1 pt): Exam blog posts in the dataset 
+ 	* Story 2 (1 pt): Delete unnecessary components (url,emoji,etc)
+ 	* Story 3 (1 pt): Format the texts 
 * Epic 2: Exploratory Analysis
+	* Story 1 (1 pt): Data overview 
+	* Story 2 (2 pts):Descriptive statistics and Plots
 * Epic 3: Natural Language Processing
-* Epic 4: Feature Engineering
-* Epic 5: Model Training and Selection 
- 	* Story 1: Split data
- 	* Story 2: Train initial model
- 	* Story 3: Iterative model developments (Naive Bayes, XgBoost, etc)
- 	* Story 4: Find the optimized model based on pre-defined metrics
- 	* Story 5: Identify important features 
-* Epic 6: Migration to AWS
+	* Story 1 (2 pt): Generate high frequency vocabulary bag 
+	* Story 2 (2 pt): Create tf-idf version of cleaned text 
+* Epic 4: Model Training  
+ 	* Story 1 (1 pt): Feature engineering 
+	* Story 2 (0 pt): Split data
+ 	* Story 3 (1 pt): Train initial model
+ 	* Story 4 (8 pts): Iterative model developments (Naive Bayes, XgBoost, etc)
+ 	* Story 5 (1 pt): Find the optimized model based on pre-defined metrics
+ 	* Story 6 (1 pt): Identify important features 
+* Epic 5: Migration to AWS
 
 **Initiative 2: Build Web App**
-* Epic 1: Build data pipeline 
-* Epic 2: Draw web prototype 
-* Epic 3: Implement modules and functionalities using Flask
+* Epic 1: Build Data Pipeline 
+* Epic 2: Draw web prototype and View Flow 
+* Epic 3: Implement Modules and Functionalities on Flask
+	* Story 1 (2 pts): Display attractive visualizations 
 
 **Initiative 3: Test, Configure and Deploy**
 * Epic 1: Perform Unit Tests 
@@ -61,6 +66,29 @@
 * Epic 3: Perform A/B Testings to Improve Design 
 * Epic 4: Provide Documentations and User Guide
 
+**Backlog**
+* I1E1S1 (Planned)
+* I1E1S2 (Planned)
+* I1E1S3 (Planned)
+* I1E2S1 (Planned)
+* I1E2S2 (Planned)
+* I1E3S1 (Planned)
+* I1E3S2 (Planned)
+* I1E4S1
+* I1E4S2
+* I1E4S3
+* I1E4S4
+* I1E4S5
+* I1E4S6
+
+**Icebox**
+* I2E1
+* I2E2
+* I2E3
+* I3E1
+* I3E2
+* I3E3
+* I3E4
 
 ## Directory structure 
 
