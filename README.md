@@ -67,13 +67,13 @@
 * Epic 4: Provide Documentations and User Guide
 
 **Backlog**
-* I1E1S1 (Planned)
-* I1E1S2 (Planned)
-* I1E1S3 (Planned)
-* I1E2S1 (Planned)
-* I1E2S2 (Planned)
-* I1E3S1 (Planned)
-* I1E3S2 (Planned)
+* I1E1S1 (1 pt,Planned)
+* I1E1S2 (1 pt,Planned)
+* I1E1S3 (1 pt,Planned)
+* I1E2S1 (1 pt,Planned)
+* I1E2S2 (2 pts,Planned)
+* I1E3S1 (2 pts,Planned)
+* I1E3S2 (2 pts,Planned)
 * I1E4S1
 * I1E4S2
 * I1E4S3
