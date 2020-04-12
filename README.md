@@ -4,6 +4,8 @@
 
 #### Developer: Skye Sheng
 #### QA: Manish Kumar
+- [Project Charter](#project-charter)
+- [Planning](#planning)
 - [Directory structure](#directory-structure)
 - [Running the app](#running-the-app)
   * [1. Initialize the database](#1-initialize-the-database)
@@ -19,6 +21,46 @@
   * [3. Kill the container](#3-kill-the-container)
 
 <!-- tocstop -->
+
+## Project Charter 
+
+**Vision**: Psychology is a complicated and mysterious subject, but luckily Myers Briggs Type Indicator (MBTI) comes to help. It helps us understand our own personality type to view the world differently, thus fostering greater self-awareness and self-acceptance. Different from typical MBTI survey which requires multiple choice answers to more than 100 questions, this application will generate more efficient and accurate personality predictions.
+
+**Mission**: By asking for text input from a user, the embedded machine learning model, trained offline using dataset [https://www.kaggle.com/datasnaek/mbti-type], will provide detailed analysis of user's personality, a final personality category and options to explore more. 
+
+**Success criteria**: 
+* Model criteria: The dataset from Kaggle will be separated into training set and testing set. Since it is a classification problem, I will use Accuracy, AUC, Sensitivity and Specificity to evaluate models. Considering the average outcomes from psychological research, I set the acceptable thresholds as accuracy greater than 70% and AUC greater than 0.65. 
+* Business criteria: The application will be considered as a success from a business standpoint if more than 50% users click to refer to a friend. 
+
+## Planning
+
+**Initiative 1: Build Model** 
+* Epic 1: Data Pre-processing  
+	* Story 1: Exam blog posts in the dataset 
+ * Story 2: Delete unnecessary components (url,emoji,etc)
+ * Story 3: Format the texts 
+* Epic 2: Exploratory Analysis
+* Epic 3: Natural Language Processing
+* Epic 4: Feature Engineering
+* Epic 5: Model Training and Selection 
+ * Story 1: Split data
+ * Story 2: Train initial model
+ * Story 3: Iterative model developments (Naive Bayes, XgBoost, etc)
+ * Story 4: Find the optimized model
+ * Story 5: Identify important features 
+* Epic 6: Migration to AWS
+
+**Initiative 2: Build Web App**
+* Epic 1: Build data pipeline 
+* Epic 2: Draw web prototype 
+* Epic 3: Implement modules and functionalities using Flask
+
+**Initiative 3: Test, Configure and Deploy**
+* Epic 1: Perform Unit Tests 
+* Epic 2: Deploy Product Beta
+* Epic 3: Perform A/B Testings to Improve Design 
+* Epic 4: Provide Documentations and User Guide
+
 
 ## Directory structure 
 
