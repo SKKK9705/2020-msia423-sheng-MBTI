@@ -37,17 +37,17 @@
 **Initiative 1: Build Model** 
 * Epic 1: Data Pre-processing  
 	* Story 1: Exam blog posts in the dataset 
- * Story 2: Delete unnecessary components (url,emoji,etc)
- * Story 3: Format the texts 
+ 	* Story 2: Delete unnecessary components (url,emoji,etc)
+ 	* Story 3: Format the texts 
 * Epic 2: Exploratory Analysis
 * Epic 3: Natural Language Processing
 * Epic 4: Feature Engineering
 * Epic 5: Model Training and Selection 
- * Story 1: Split data
- * Story 2: Train initial model
- * Story 3: Iterative model developments (Naive Bayes, XgBoost, etc)
- * Story 4: Find the optimized model
- * Story 5: Identify important features 
+ 	* Story 1: Split data
+ 	* Story 2: Train initial model
+ 	* Story 3: Iterative model developments (Naive Bayes, XgBoost, etc)
+ 	* Story 4: Find the optimized model based on pre-defined metrics
+ 	* Story 5: Identify important features 
 * Epic 6: Migration to AWS
 
 **Initiative 2: Build Web App**
