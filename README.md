@@ -4,6 +4,7 @@
 
 **Developer:** Skye Sheng
 **QA:** Manish Kumar
+
 - [Project Charter](#project-charter)
 - [Planning](#planning)
 - [Directory structure](#directory-structure)
@@ -24,7 +25,7 @@
 
 ## Project Charter 
 
-**Vision**: Psychology is a complicated and mysterious subject, but luckily Myers Briggs Type Indicator (MBTI) comes to help. It helps us understand our own personality type to view the world differently, thus fostering greater self-awareness and self-acceptance. Different from typical MBTI survey which requires multiple choice answers to more than 100 questions, this application will generate more efficient and accurate personality predictions.
+**Vision**: Psychology is a complex and mysterious subject, but luckily Myers Briggs Type Indicator (MBTI) comes to help. It helps us understand our own personality type to view the world differently, thus fostering greater self-awareness and self-acceptance. Different from typical MBTI survey which requires multiple choice answers to more than 100 questions, this application will generate more efficient and accurate personality predictions.
 
 **Mission**: By asking for text input from a user, the embedded machine learning model, trained offline using dataset [https://www.kaggle.com/datasnaek/mbti-type], will provide detailed analysis of user's personality, a final personality category and options to explore more. 
 
