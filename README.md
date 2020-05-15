@@ -210,7 +210,7 @@ You should now be able to access the app at http://0.0.0.0:5000/ in your browser
 The Dockerfile for running the flask app is in the `app/` folder. To build the image, run from this directory (the root of the repo): 
 
 ```bash
- docker build -f app/Dockerfile -t pennylane .
+ docker build -f app/Dockerfile -t mbti .
 ```
 
 This command builds the Docker image, with the tag `pennylane`, based on the instructions in `app/Dockerfile` and the files existing in this directory.
