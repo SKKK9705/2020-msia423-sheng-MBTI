@@ -3,8 +3,8 @@ MYSQL_PASSWORD="password"
 MYSQL_HOST="endpoint of your host"
 MYSQL_PORT="port number"
 DATABASE_NAME='msia423_db'
-MYSQL_USER_ins=msia423instructor
-MYSQL_PASSWORD_ins=ksd0232
-MYSQL_USER_qa=mkmanish128
-MYSQL_PASSWORD_qa=ksd0232
+MYSQL_USER_ins="instrcutor user name"
+MYSQL_PASSWORD_ins="my netid"
+MYSQL_USER_qa="qa user name"
+MYSQL_PASSWORD_qa="my netid"
 
