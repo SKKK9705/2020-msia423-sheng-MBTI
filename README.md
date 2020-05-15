@@ -9,13 +9,10 @@
 - [Planning](#planning)
 - [Directory structure](#directory-structure)
 - [Running the app](#running-the-app)
-  * [1. Initialize the database](#1-initialize-the-database)
-    + [Create the database with a single song](#create-the-database-with-a-single-song)
-    + [Adding additional songs](#adding-additional-songs)
-    + [Defining your engine string](#defining-your-engine-string)
-      - [Local SQLite database](#local-sqlite-database)
-  * [2. Configure Flask app](#2-configure-flask-app)
-  * [3. Run the Flask app](#3-run-the-flask-app)
+  * [1. Load raw data to s3](#1-load-raw-data-to-s3)
+  * [2. Initialize the database](#2-initialize-the-database)
+  * [3. Configure Flask app](#2-configure-flask-app)
+  * [4. Run the Flask app](#3-run-the-flask-app)
 - [Running the app in Docker](#running-the-app-in-docker)
   * [1. Build the image](#1-build-the-image)
   * [2. Run the container](#2-run-the-container)
@@ -143,8 +140,8 @@
 ### 1. Load raw data to S3 
 
 #### Fill in AWS credentials in config/config.env 
-`AWS_ACCESS_KEY_ID="your aws key id"
-AWS_SECRET_ACCESS_KEY="your key"`
+- AWS_ACCESS_KEY_ID="your aws key id"
+- AWS_SECRET_ACCESS_KEY="your key"
 
 #### Update S3 bucket path in config/config.yml 
 load_data > upload_data > bucket_name
@@ -161,10 +158,10 @@ create local sqlite database under data folder, run:
 
 create mysql rds, first get connected by updating information in config/.mysqlconfig,
 
-`MYSQL_USER="user name"
-MYSQL_PASSWORD="password"
-MYSQL_HOST="endpoint of your host"
-MYSQL_PORT="port number"`
+- MYSQL_USER="user name"
+- MYSQL_PASSWORD="password"
+- MYSQL_HOST="endpoint of your host"
+- MYSQL_PORT="port number"
 
 confugure it:
 
