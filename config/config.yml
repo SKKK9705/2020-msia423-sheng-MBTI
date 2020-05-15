@@ -1,0 +1,29 @@
+load_data:
+  download_data:
+    path: data/data.csv
+  upload_data:
+    input_path: data/data.csv
+    bucket_name: nw-skyesheng-s3
+    output_path: 423project/data.csv
+  load_csv:
+    path: data/data.csv
+preprocess_data:
+  generate_class:
+    target: type
+    response1: I-E
+    response2: N-S
+    response3: T-F
+    response4: J-P
+generate_feature:
+  add_feature:
+    path: data/class_data.csv
+    target: posts
+    f1: words_per_comment
+    f2: http_per_comment
+    f3: music_per_comment
+    f4: question_per_comment
+    f5: img_per_comment
+    f6: excl_per_comment
+    f7: ellipsis_per_comment
+
+
