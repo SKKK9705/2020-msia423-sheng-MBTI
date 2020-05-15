@@ -67,7 +67,7 @@ def create_db(args):
 
     session = get_session(engine_string=engine_string)
 
-    user = User(posts=args.posts, words_per_comment=args.words_per_comment, http_per_comment=args.http_per_comment, music_per_comment=args.music_per_comment, question_per_comment=args.question_per_comment, img_per_comment=args.img_per_comment, excl_per_comment=args.excl_per_comment, ecllipsis_per_comment=args.ellipsis_per_comment, I_E=args.I_E, N_S=args.N_S, T_F=args.T_F, J_P=args.J_P, type=args.type type=args.type)
+    user = User(posts=args.posts, words_per_comment=args.words_per_comment, http_per_comment=args.http_per_comment, music_per_comment=args.music_per_comment, question_per_comment=args.question_per_comment, img_per_comment=args.img_per_comment, excl_per_comment=args.excl_per_comment, ecllipsis_per_comment=args.ellipsis_per_comment, I_E=args.I_E, N_S=args.N_S, T_F=args.T_F, J_P=args.J_P, type=args.type)
     session.add(user)
     session.commit()
     logger.info(
