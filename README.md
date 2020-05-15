@@ -136,46 +136,46 @@
 ```
 
 ## Running the app
-### 1. Initialize the database 
 
-#### Create the database with a single song 
-To create the database in the location configured in `config.py` with one initial song, run: 
+### Build image
+`docker build -t mbti .`
 
-`python run.py create_db --engine_string=<engine_string> --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+### 1. Load raw data to S3 
 
-By default, `python run.py create_db` creates a database at `sqlite:///data/tracks.db` with the initial song *Radar* by Britney spears. 
-#### Adding additional songs 
-To add an additional song:
+#### Fill in AWS credentials in config/config.env 
+AWS_ACCESS_KEY_ID="your aws key id"
+AWS_SECRET_ACCESS_KEY="your key"
 
-`python run.py ingest --engine_string=<engine_string> --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
+#### Update S3 bucket path in config/config.yml 
+load_data > upload_data > bucket_name
 
-By default, `python run.py ingest` adds *Minor Cause* by Emancipator to the SQLite database located in `sqlite:///data/tracks.db`.
+#### docker run to upload raw data to s3 
+`docker run --env-file=config/config.env mbti run.py load_data`
 
-#### Defining your engine string 
-A SQLAlchemy database connection is defined by a string with the following format:
+### 2. Initialize the database 
 
-`dialect+driver://username:password@host:port/database`
+#### Create the database with an initial value 
+create local sqlite database under data folder, run: 
 
-The `+dialect` is optional and if not provided, a default is used. For a more detailed description of what `dialect` and `driver` are and how a connection is made, you can see the documentation [here](https://docs.sqlalchemy.org/en/13/core/engines.html). We will cover SQLAlchemy and connection strings in the SQLAlchemy lab session on 
-##### Local SQLite database 
+`docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti run.py create_db --RDS False`
 
-A local SQLite database can be created for development and local testing. It does not require a username or password and replaces the host and port with the path to the database file: 
+create mysql rds, first get connected by updating information in config/.mysqlconfig, 
+MYSQL_USER="user name"
+MYSQL_PASSWORD="password"
+MYSQL_HOST="endpoint of your host"
+MYSQL_PORT="port number"
 
-```python
-engine_string='sqlite:///data/tracks.db'
+then run:
 
-```
-
-The three `///` denote that it is a relative path to where the code is being run (which is from the root of this directory).
-
-You can also define the absolute path with four `////`, for example:
-
-```python
-engine_string = 'sqlite://///Users/cmawer/Repos/2020-MSIA423-template-repository/data/tracks.db'
-```
+`docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
 
 
-### 2. Configure Flask app 
+#### Seed additional users and posts  
+to be filled in later 
+
+
+
+### 3. Configure Flask app 
 
 `config/flaskconfig.py` holds the configurations for the Flask app. It includes the following configurations:
 
@@ -191,7 +191,7 @@ SQLALCHEMY_ECHO = False  # If true, SQL for queries made will be printed
 MAX_ROWS_SHOW = 100 # Limits the number of rows returned from the database 
 ```
 
-### 3. Run the Flask app 
+### 4. Run the Flask app 
 
 To run the Flask app, run: 
 
@@ -218,7 +218,7 @@ This command builds the Docker image, with the tag `pennylane`, based on the ins
 To run the app, run from this directory: 
 
 ```bash
-docker run -p 5000:5000 --name test pennylane
+docker run -p 5000:5000 --name test mbti
 ```
 You should now be able to access the app at http://0.0.0.0:5000/ in your browser.
 
@@ -241,13 +241,12 @@ where `test` is the name given in the `docker run` command.
 It is possible that Docker will have a problem with the bash script `app/boot.sh` that is used when running on a Windows machine. Windows can encode the script wrongly so that when it copies over to the Docker image, it is corrupted. If this happens to you, try using the alternate Dockerfile, `app/Dockerfile_windows`, i.e.:
 
 ```bash
- docker build -f app/Dockerfile_windows -t pennylane .
+ docker build -f app/Dockerfile_windows -t mbti .
 ```
 
 then run the same `docker run` command: 
 
 ```bash
-docker run -p 5000:5000 --name test pennylane
+docker run -p 5000:5000 --name test mbti
 ```
 
-The new image defines the entry command as `python3 app.py` instead of `./boot.sh`. Building the sample PennyLane image this way will require initializing the database prior to building the image so that it is copied over, rather than created when the container is run. Therefore, please **do the step [Create the database with a single song](#create-the-database-with-a-single-song) above before building the image**.
