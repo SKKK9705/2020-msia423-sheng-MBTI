@@ -143,8 +143,8 @@
 ### 1. Load raw data to S3 
 
 #### Fill in AWS credentials in config/config.env 
-AWS_ACCESS_KEY_ID="your aws key id"
-AWS_SECRET_ACCESS_KEY="your key"
+`AWS_ACCESS_KEY_ID="your aws key id"
+AWS_SECRET_ACCESS_KEY="your key"`
 
 #### Update S3 bucket path in config/config.yml 
 load_data > upload_data > bucket_name
@@ -159,11 +159,16 @@ create local sqlite database under data folder, run:
 
 `docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti run.py create_db --RDS False`
 
-create mysql rds, first get connected by updating information in config/.mysqlconfig, 
-MYSQL_USER="user name"
+create mysql rds, first get connected by updating information in config/.mysqlconfig,
+
+`MYSQL_USER="user name"
 MYSQL_PASSWORD="password"
 MYSQL_HOST="endpoint of your host"
-MYSQL_PORT="port number"
+MYSQL_PORT="port number"`
+
+confugure it:
+
+`source .mysqlconfig`
 
 then run:
 
