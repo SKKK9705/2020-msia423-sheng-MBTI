@@ -152,6 +152,7 @@ pip install -r requirements.txt
 
 configure it:
 `source config/config.env`
+(test by `echo ${AWS_ACCESS_KEY_ID}`)
 
 #### Update your S3 bucket path in config/config.yml 
 load_data > upload_data > bucket_name: "your bucket name"
@@ -175,7 +176,8 @@ load_data > upload_data > output_path: "your output bath in s3 bucket"
 - MYSQL_PORT="port number"
 
 confugure it:
-`source .mysqlconfig`
+`source config/.mysqlconfig`
+(test by `echo ${MYSQL_USER}`)
 
 then run:
 `docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
