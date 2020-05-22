@@ -135,9 +135,11 @@
 ## Running the app
 
 ### create an environment
-`conda create -n mbti python=3.7\
-conda activate mbti\
-pip install -r requirements.txt`
+```bash
+conda create -n mbit python=3.7
+conda activate mbti
+pip install -r requirements.txt
+```
 
 ### Build image
 `docker build -t mbti .`
