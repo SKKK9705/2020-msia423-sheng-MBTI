@@ -134,6 +134,11 @@
 
 ## Running the app
 
+### create an environment
+`conda create -n mbti python=3.7
+conda activate mbti
+pip install -r requirements.txt`
+
 ### Build image
 `docker build -t mbti .`
 
@@ -143,7 +148,10 @@
 - AWS_ACCESS_KEY_ID="your aws key id"
 - AWS_SECRET_ACCESS_KEY="your key"
 
-#### Update S3 bucket path in config/config.yml 
+configure it:
+`source config/config.env`
+
+#### Update your S3 bucket path in config/config.yml 
 load_data > upload_data > bucket_name
 
 #### docker run to upload raw data to s3 
@@ -164,11 +172,9 @@ create mysql rds, first get connected by updating information in config/.mysqlco
 - MYSQL_PORT="port number"
 
 confugure it:
-
 `source .mysqlconfig`
 
 then run:
-
 `docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
 
 
