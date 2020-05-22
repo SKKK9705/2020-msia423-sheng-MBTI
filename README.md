@@ -165,7 +165,7 @@ load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### Create the database with an initial value 
 
-##### - Create local sqlite database under data folder, run: 
+##### - Create local sqlite database (users.db) under data folder, run: 
 `docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti run.py create_db --RDS False`
 
 ##### - Create MySQL RDS, first get connected by updating information in config/.mysqlconfig,
