@@ -155,7 +155,7 @@ configure it:
 (test by `echo ${AWS_ACCESS_KEY_ID}`)
 
 #### Update your S3 bucket path in config/config.yml 
-load_data > upload_data > bucket_name: "your bucket name"
+load_data > upload_data > bucket_name: "your bucket name"<br/>
 load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### docker run to upload raw data to s3 
