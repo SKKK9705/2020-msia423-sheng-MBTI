@@ -184,6 +184,9 @@ confugure it:
 then run:
 `docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
 
+access MySQL database:
+`winpty docker run -it --rm mysql:latest mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}`
+
 
 #### Seed additional users and posts  
 to be filled in later 
