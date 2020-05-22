@@ -154,7 +154,8 @@ configure it:
 `source config/config.env`
 
 #### Update your S3 bucket path in config/config.yml 
-load_data > upload_data > bucket_name
+load_data > upload_data > bucket_name: "your bucket name"
+load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### docker run to upload raw data to s3 
 `docker run --env-file=config/config.env mbti run.py load_data`
