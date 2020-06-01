@@ -137,7 +137,7 @@
 ### Create an environment
 ```bash
 conda create -n mbit python=3.7
-conda activate mbti
+source activate mbti
 pip install -r requirements.txt
 ```
 
