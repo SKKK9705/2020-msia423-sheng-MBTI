@@ -159,7 +159,7 @@ load_data > upload_data > bucket_name: "your bucket name"<br/>
 load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### docker run to upload raw data to s3 
-`docker run --env-file=config/config.env mbti run.py load_data`
+`docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti load_data`
 
 ### 2. Initialize the database 
 
