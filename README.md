@@ -144,7 +144,9 @@ pip install -r requirements.txt
 ### Build image
 `docker build -t mbti .`
 
-### 1. Load raw data to S3 
+### 1. Data and Modeling Pipeline
+
+#### 1. Download and upload raw data to S3 
 
 #### Fill in AWS credentials in config/config.env 
 - AWS_ACCESS_KEY_ID="your aws key id"
@@ -160,6 +162,24 @@ load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### docker run to upload raw data to s3 
 `docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti load_data`
+
+#### 2. Preprocess and generate class variables 
+data with class labels will be saved as class_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti preprocess_data`
+
+#### 3. Feature engineering  
+dataset with class labels and new features will be saved as model_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti generate_feature`
+
+#### 4. Train models   
+Three models available: logistics regression(highest accuracy and default), random forest and decision tree. 
+dataset with class labels and new features will be saved as model_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model`
+
+#### 5. Evaluate model performance and post process    
+model performance will be written in evaluate.txt under models and post process (feature importance etc) in post_process folder under models 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model`
+
 
 ### 2. Initialize the database 
 
