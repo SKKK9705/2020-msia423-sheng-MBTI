@@ -180,6 +180,9 @@ dataset with class labels and new features will be saved as model_data.csv under
 model performance will be written in evaluate.txt under models and post process (feature importance etc) in post_process folder under models 
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model`
 
+#### Run the entire pipeline
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
+
 
 ### 2. Initialize the database 
 
