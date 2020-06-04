@@ -212,9 +212,11 @@ access MySQL database:
 
 
 #### Seed additional users and posts  
-to be filled in later 
+To add new posts to RDS, run
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
 
-
+to local database, run
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"
 
 
 ### 3. Configure Flask app 
