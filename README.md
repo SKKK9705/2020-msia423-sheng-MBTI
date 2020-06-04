@@ -212,10 +212,11 @@ access MySQL database:
 
 
 #### Seed additional users and posts  
-To add new posts to RDS, run
+##### - To add new posts to RDS, run
+This will add raw input post and corresponding personality type prediction in RDS database 
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
 
-to local database, run
+##### - To local database, run
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"
 
 
