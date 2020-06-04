@@ -205,7 +205,7 @@ confugure it:
 (test by `echo ${MYSQL_USER}`)
 
 then run:
-`docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_r`
 
 access MySQL database:
 `winpty docker run -it --rm mysql:latest mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}`
@@ -213,6 +213,7 @@ access MySQL database:
 
 #### Seed additional users and posts  
 to be filled in later 
+
 
 
 
