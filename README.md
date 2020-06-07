@@ -189,7 +189,7 @@ model performance will be written in evaluate.txt under models and post process 
 #### Create the database with an initial value 
 
 ##### - Create local sqlite database (users.db) under data folder, run: 
-`docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti run.py create_db --RDS False`
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_l`
 
 ##### - Create MySQL RDS, first get connected to NU VPN
 
