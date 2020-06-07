@@ -217,7 +217,7 @@ This will add raw input post and corresponding personality type prediction in RD
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
 
 ##### - To local database, run
-`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"`
 
 
 ### 3. Configure Flask app 
