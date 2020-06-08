@@ -183,6 +183,9 @@ model performance will be written in evaluate.txt under models and post process 
 #### Run the entire pipeline
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
 
+#### Test 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test`
+
 
 ### 2. Initialize the database 
 
@@ -252,7 +255,6 @@ Once finished with the app, you will need to kill the container. To do so:
 ```bash
 docker kill test 
 ```
-
 
 ### Workaround for potential Docker problem for Windows.
 
