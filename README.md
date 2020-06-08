@@ -261,36 +261,30 @@ This command builds the Docker image, with the tag `pennylane`, based on the ins
 ### 2. Run the container 
 
 To run the app, run from this directory: 
+- use RDS instance
+```bash
+docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
+```
 
+- use local database 
 ```bash
 docker run -p 5000:5000 --name test mbti
 ```
 You should now be able to access the app at http://0.0.0.0:5000/ in your browser.
 
-This command runs the `pennylane` image as a container named `test` and forwards the port 5000 from container to your laptop so that you can access the flask app exposed through that port. 
-
-If `PORT` in `config/flaskconfig.py` is changed, this port should be changed accordingly (as should the `EXPOSE 5000` line in `app/Dockerfile`)
-
 ### 3. Kill the container 
 
 Once finished with the app, you will need to kill the container. To do so: 
-
 ```bash
 docker kill test 
 ```
 
-where `test` is the name given in the `docker run` command.
 
 ### Workaround for potential Docker problem for Windows.
-
-It is possible that Docker will have a problem with the bash script `app/boot.sh` that is used when running on a Windows machine. Windows can encode the script wrongly so that when it copies over to the Docker image, it is corrupted. If this happens to you, try using the alternate Dockerfile, `app/Dockerfile_windows`, i.e.:
 
 ```bash
  docker build -f app/Dockerfile_windows -t mbti .
 ```
-
-then run the same `docker run` command: 
-
 ```bash
 docker run -p 5000:5000 --name test mbti
 ```
