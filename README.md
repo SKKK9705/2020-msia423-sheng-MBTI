@@ -286,7 +286,7 @@ docker kill test
  docker build -f app/Dockerfile_windows -t mbti .
 ```
 ```bash
-docker run -p 5000:5000 --name test mbti
+docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
 ```
 You should now be able to access the app at http://127.0.0.1:5000/ in your browser.
 
