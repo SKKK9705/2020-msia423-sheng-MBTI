@@ -6,9 +6,17 @@ pymysql==0.9.3
 awscli==1.16.166
 numpy==1.16.3
 pandas==0.24.2
+<<<<<<< HEAD
 boto3==1.9.156
 botocore==1.12.156
 s3transfer==0.2.0
 scikit-learn==0.21.3
 pytest==5.4.1
 
+||||||| merged common ancestors
+pyaml==18.11.0
+=======
+boto3==1.9.156
+botocore==1.12.156
+s3transfer==0.2.0
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280

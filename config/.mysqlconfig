@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MYSQL_USER=admin
 MYSQL_PASSWORD=123goodASDFGHJKL
 MYSQL_HOST=msia423-skye.cjae1j2uu4ze.us-west-1.rds.amazonaws.com
@@ -7,4 +8,25 @@ MYSQL_USER_ins=msia423instructor
 MYSQL_PASSWORD_ins=ksd0232
 MYSQL_USER_qa=mkmanish128
 MYSQL_PASSWORD_qa=ksd0232
+||||||| merged common ancestors
+MYSQL_USER="user name"
+MYSQL_PASSWORD="password"
+MYSQL_HOST="endpoint of your host"
+MYSQL_PORT="port number"
+DATABASE_NAME='msia423_db'
+MYSQL_USER_ins=msia423instructor
+MYSQL_PASSWORD_ins=ksd0232
+MYSQL_USER_qa=mkmanish128
+MYSQL_PASSWORD_qa=ksd0232
+=======
+MYSQL_USER="user name"
+MYSQL_PASSWORD="password"
+MYSQL_HOST="endpoint of your host"
+MYSQL_PORT="port number"
+DATABASE_NAME='msia423_db'
+MYSQL_USER_ins="instrcutor user name"
+MYSQL_PASSWORD_ins="my netid"
+MYSQL_USER_qa="qa user name"
+MYSQL_PASSWORD_qa="my netid"
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 

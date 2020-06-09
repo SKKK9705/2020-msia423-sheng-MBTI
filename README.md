@@ -144,70 +144,241 @@ pip install -r requirements.txt
 ### Build image
 `docker build -t mbti .`
 
+<<<<<<< HEAD
+### 1. Data and Modeling Pipeline
+||||||| merged common ancestors
+### 1. Load raw data to S3 
+=======
 ### 1. Data and Modeling Pipeline
 
-#### 1. Download and upload raw data to S3
+#### 1. Download and upload raw data to S3 
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
+#### 1. Download and upload raw data to S3
+||||||| merged common ancestors
+#### Fill in AWS credentials in config/config.env 
+AWS_ACCESS_KEY_ID="your aws key id"
+AWS_SECRET_ACCESS_KEY="your key"
+=======
+#### Fill in AWS credentials in config/config.env 
+- AWS_ACCESS_KEY_ID="your aws key id"
+- AWS_SECRET_ACCESS_KEY="your key"
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
+
+<<<<<<< HEAD
 #### Fill in AWS credentials in config/config.env
 - AWS_ACCESS_KEY_ID="your aws key id"
 - AWS_SECRET_ACCESS_KEY="your key"
-
+||||||| merged common ancestors
+#### Update S3 bucket path in config/config.yml 
+load_data > upload_data > bucket_name
+=======
 configure it:
 `source config/config.env`
 (test by `echo ${AWS_ACCESS_KEY_ID}`)
 
+#### Update your S3 bucket path in config/config.yml 
+load_data > upload_data > bucket_name: "your bucket name"<br/>
+load_data > upload_data > output_path: "your output bath in s3 bucket"
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
+
+<<<<<<< HEAD
+configure it:
+`source config/config.env`
+(test by `echo ${AWS_ACCESS_KEY_ID}`)
+||||||| merged common ancestors
+#### docker run to upload raw data to s3 
+`docker run --env-file=config/config.env mbti run.py load_data`
+=======
+#### docker run to upload raw data to s3 
+`docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti load_data`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
+
+<<<<<<< HEAD
 #### Update your S3 bucket path in config/config.yml
 load_data > upload_data > bucket_name: "your bucket name"<br/>
 load_data > upload_data > output_path: "your output bath in s3 bucket"
+||||||| merged common ancestors
+### 2. Initialize the database 
+=======
+#### 2. Preprocess and generate class variables 
+data with class labels will be saved as class_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti preprocess_data`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### docker run to upload raw data to s3
 `docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti load_data`
+||||||| merged common ancestors
+#### Create the database with an initial value 
+create local sqlite database under data folder, run: 
+=======
+#### 3. Feature engineering  
+dataset with class labels and new features will be saved as model_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti generate_feature`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### 2. Preprocess and generate class variables
 data with class labels will be saved as class_data.csv under data folder
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti preprocess_data`
+||||||| merged common ancestors
+`docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti run.py create_db --RDS False`
+=======
+#### 4. Train models   
+Three models available: logistics regression(highest accuracy and default), random forest and decision tree. 
+dataset with class labels and new features will be saved as model_data.csv under data folder 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### 3. Feature engineering
 dataset with class labels and new features will be saved as model_data.csv under data folder
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti generate_feature`
+||||||| merged common ancestors
+create mysql rds, first get connected by updating information in config/.mysqlconfig, 
+MYSQL_USER="user name"
+MYSQL_PASSWORD="password"
+MYSQL_HOST="endpoint of your host"
+MYSQL_PORT="port number"
+=======
+#### 5. Evaluate model performance and post process    
+model performance will be written in evaluate.txt under models and post process (feature importance etc) in post_process folder under models 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### 4. Train models
 Three models available: logistics regression(highest accuracy and default), random forest and decision tree.
 dataset with class labels and new features will be saved as model_data.csv under data folder
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model`
+||||||| merged common ancestors
+then run:
+=======
+#### Run the entire pipeline
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### 5. Evaluate model performance and post process
 model performance will be written in evaluate.txt under models and post process (feature importance etc) in post_process folder under models
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model`
+||||||| merged common ancestors
+`docker run --env-file=config/.mysqlconfig mbti run.py create_db --RDS True`
+=======
+#### Test 
+`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test`
+This command will run test_data_preparation.py, test_evalyuate_model.py and test_model.py
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
 #### Run the entire pipeline
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
 
+<<<<<<< HEAD
 #### Test
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test`
 This command will run test_data_preparation.py, test_evalyuate_model.py and test_model.py
+||||||| merged common ancestors
+#### Seed additional users and posts  
+to be filled in later 
+=======
+### 2. Initialize the database 
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+#### Create the database with an initial value 
 
+<<<<<<< HEAD
 ### 2. Initialize the database
+||||||| merged common ancestors
+=======
+##### - Create local sqlite database (users.db) under data folder, run: 
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_l`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 #### Create the database with an initial value
+||||||| merged common ancestors
+### 3. Configure Flask app 
+=======
+##### - Create MySQL RDS, first get connected to NU VPN
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 ##### - Create local sqlite database (users.db) under data folder, run:
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_l`
-
-##### - Create MySQL RDS, first get connected to NU VPN
-
+||||||| merged common ancestors
+`config/flaskconfig.py` holds the configurations for the Flask app. It includes the following configurations:
+=======
 get connected by updating information in config/.mysqlconfig:
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
+##### - Create MySQL RDS, first get connected to NU VPN
+||||||| merged common ancestors
+```python
+DEBUG = True  # Keep True for debugging, change to False when moving to production 
+LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
+HOST = "0.0.0.0" # the host that is running the app. 0.0.0.0 when running locally 
+PORT = 5000  # What port to expose app on. Must be the same as the port exposed in app/Dockerfile 
+SQLALCHEMY_DATABASE_URI = 'sqlite:///data/tracks.db'  # URI (engine string) for database that contains tracks
+APP_NAME = "penny-lane"
+SQLALCHEMY_TRACK_MODIFICATIONS = True 
+SQLALCHEMY_ECHO = False  # If true, SQL for queries made will be printed
+MAX_ROWS_SHOW = 100 # Limits the number of rows returned from the database 
+```
+=======
 - MYSQL_USER="user name"
 - MYSQL_PASSWORD="password"
 - MYSQL_HOST="endpoint of your host"
 - MYSQL_PORT="port number"
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
+get connected by updating information in config/.mysqlconfig:
+||||||| merged common ancestors
+### 4. Run the Flask app 
+=======
 confugure it:
 `source config/.mysqlconfig`
 (test by `echo ${MYSQL_USER}`)
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
+- MYSQL_USER="user name"
+- MYSQL_PASSWORD="password"
+- MYSQL_HOST="endpoint of your host"
+- MYSQL_PORT="port number"
+||||||| merged common ancestors
+To run the Flask app, run: 
+=======
+then run:
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_r`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
+
+<<<<<<< HEAD
+confugure it:
+`source config/.mysqlconfig`
+(test by `echo ${MYSQL_USER}`)
+||||||| merged common ancestors
+```bash
+python app.py
+```
+=======
+access MySQL database:
+`winpty docker run -it --rm mysql:latest mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}`
+
+
+#### Seed additional users and posts  
+##### - To add new posts to RDS, run
+This will add raw input post and corresponding personality type prediction in RDS database 
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
+
+##### - To local database, run
+`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"`
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
+
+<<<<<<< HEAD
 then run:
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_r`
 
@@ -219,6 +390,10 @@ access MySQL database:
 ##### - To add new posts to RDS, run
 This will add raw input post and corresponding personality type prediction in RDS database
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
+||||||| merged common ancestors
+You should now be able to access the app at http://0.0.0.0:5000/ in your browser.
+=======
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
 ##### - To local database, run
 `docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"`
@@ -236,6 +411,7 @@ The Dockerfile for running the flask app is in the `app/` folder. To build the i
 
 This command builds the Docker image, with the tag `pennylane`, based on the instructions in `app/Dockerfile` and the files existing in this directory.
 
+<<<<<<< HEAD
 ### 2. Run the container
 
 To run the app, run from this directory:
@@ -243,16 +419,45 @@ To run the app, run from this directory:
 ```bash
 docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
 ```
+||||||| merged common ancestors
+To run the app, run from this directory: 
+=======
+To run the app, run from this directory: 
+- use RDS instance
+```bash
+docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
+```
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 
+<<<<<<< HEAD
 - use local database
+||||||| merged common ancestors
+=======
+- use local database 
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 ```bash
 docker run -p 5000:5000 --name test mbti
 ```
 You should now be able to access the app at http://0.0.0.0:5000/ in your browser.
 
+<<<<<<< HEAD
 ### 3. Kill the container
 
 Once finished with the app, you will need to kill the container. To do so:
+||||||| merged common ancestors
+This command runs the `pennylane` image as a container named `test` and forwards the port 5000 from container to your laptop so that you can access the flask app exposed through that port. 
+
+If `PORT` in `config/flaskconfig.py` is changed, this port should be changed accordingly (as should the `EXPOSE 5000` line in `app/Dockerfile`)
+
+### 3. Kill the container 
+
+Once finished with the app, you will need to kill the container. To do so: 
+
+=======
+### 3. Kill the container 
+
+Once finished with the app, you will need to kill the container. To do so: 
+>>>>>>> a77afaf4e5d48a96770652ef76529895285f4280
 ```bash
 docker kill test 
 ```
