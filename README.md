@@ -144,9 +144,8 @@ pip install -r requirements.txt
 ### Build image
 `docker build -t mbti .`
 
-### 1. Load raw data to S3 
-### 1. Data and Modeling Pipeline
 
+### 1. Data and Modeling Pipeline
 
 #### 1. Download and upload raw data to S3
 
