@@ -202,7 +202,7 @@ model performance will be written in evaluate.txt under models and post process 
 docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti all_pipeline
 ```
 
-#### Test 
+#### Unit Tests 
 ```bash
 docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test
 ```
@@ -213,7 +213,9 @@ This command will run test_data_preparation.py, test_evalyuate_model.py and test
 #### Create the database with an initial value 
 
 ##### - Create local sqlite database (users.db) under data folder, run: 
-`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_l`
+```bash
+docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_l
+```
 
 ##### - Create MySQL RDS, first get connected to NU VPN
 then get connected by updating information in config/.mysqlconfig
@@ -227,7 +229,9 @@ confugure it:
 (test by `echo ${MYSQL_USER}`)
 
 then run:
-`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_r`
+```bash
+docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti create_db_r
+```
 
 access RDS database:
 `winpty docker run -it --rm mysql:latest mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}`
@@ -236,10 +240,14 @@ access RDS database:
 #### Seed additional users and posts  
 ##### - To add new posts to RDS, run
 This will add raw input post and corresponding personality type prediction in RDS database 
-`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"`
+```bash
+docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_r posts="<content of posts>"
+```
 
 ##### - To local database, run
-`docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"`
+```bash
+docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",target=/app/ mbti ingest_l posts="<content of posts>"
+```
 
 
 ## Running the app in Docker
