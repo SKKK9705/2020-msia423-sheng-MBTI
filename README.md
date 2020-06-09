@@ -187,8 +187,7 @@ dataset with class labels and new features will be saved as model_data.csv under
 ```bash
 docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model
 ```
-Three models available: logistics regression(highest accuracy and default), random forest and decision tree. 
-dataset with class labels and new features will be saved as model_data.csv under data folder 
+Test and train sets are splitted. Test sets are saved under data folder. Three models available: logistics regression(highest accuracy and default), random forest and decision tree. 
 
 
 #### 5. Evaluate model performance and post process 
