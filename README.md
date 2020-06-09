@@ -260,15 +260,12 @@ The Dockerfile for running the flask app is in the `app/` folder. To build the i
  docker build -f app/Dockerfile -t mbti .
 ```
 
-This command builds the Docker image, with the tag `pennylane`, based on the instructions in `app/Dockerfile` and the files existing in this directory.
-
-
 ### 2. Run the container
 To run the app, run from this directory: 
 - use RDS instance
 ```bash
 docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
-
+```
 - use local database
 ```bash
 docker run -p 5000:5000 --name test mbti
