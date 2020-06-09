@@ -2,40 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="static/basic.css" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
 </head>
 
 <body>
     <h3>
-         <a href = "{{ url_for('index') }}">Penny Lane Music Recommender</a>
+         <a href = "{{ url_for('index') }}">MBTI Personality Prediction</a>
     </h3>
 
     <hr/>
     <table>
          <thead>
             <tr>
-               <th>Title</th>
-               <th>Artist</th>
-               <th>Album</th>
+               <th>Raw Post</th>
+               <th>Personality Prediction</th>
             </tr>
          </thead>
 
          <tbody>
-            {% for track in tracks %}
+            {% for user in users %}
                <tr>
-                   <td>{{ track.title }}</td>
-                   <td>{{ track.artist }}</td>
-                   <td>{{ track.album }}</td>
+                   <td>{{ user.posts }}</td>
+                   <td><font color="red">{{ user.type }}</font></td>
                </tr>
             {% endfor %}
          </tbody>
       </table>
       <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
       <dl>
-        <input type=text size=15 name=title placeholder="Title">
-        <input type=text size=15 name=artist placeholder="Artist">
-        <input type=text size=15 name=album placeholder="Album">
-        <input type=submit value=Add>
+        <input type=text size=15 name=posts placeholder="Raw Post">
+        <input type=submit value=Predict>
       </dl>
     </form>
 
