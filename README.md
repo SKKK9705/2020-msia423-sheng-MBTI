@@ -163,6 +163,7 @@ load_data > upload_data > output_path: "your output bath in s3 bucket"
 
 #### docker run to upload raw data to s3 
 `docker run --env-file=config/config.env --mount type=bind,source="$(pwd)",target=/app/ mbti load_data`
+data.csv will be stored under data folder
 
 
 #### 2. Preprocess and generate class variables 
