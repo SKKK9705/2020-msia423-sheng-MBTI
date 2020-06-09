@@ -198,7 +198,9 @@ model performance will be written in evaluate.txt under models and post process 
 
 
 #### Run the entire pipeline
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all_pipeline
+```
 
 #### Test 
 ```bash
