@@ -257,7 +257,7 @@ docker run --env-file=config/.mysqlconfig --mount type=bind,source="$(pwd)",targ
 The Dockerfile for running the flask app is in the `app/` folder. To build the image, run from this directory (the root of the repo):
 
 ```bash
- docker build -f app/Dockerfile -t mbti .
+ docker build -f app/Dockerfile_windows -t mbti .
 ```
 
 ### 2. Run the container
@@ -270,7 +270,7 @@ docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
 ```bash
 docker run -p 5000:5000 --name test mbti
 ```
-You should now be able to access the app at http://0.0.0.0:5000/ in your browser.
+You should now be able to access the app at http://127.0.0.1:5000/ in your browser.
 
 
 ### 3. Kill the container 
@@ -279,14 +279,4 @@ Once finished with the app, you will need to kill the container. To do so:
 ```bash
 docker kill test 
 ```
-
-### Workaround for potential Docker problem for Windows.
-
-```bash
- docker build -f app/Dockerfile_windows -t mbti .
-```
-```bash
-docker run --env-file=config/.mysqlconfig -p 5000:5000 --name test mbti
-```
-You should now be able to access the app at http://127.0.0.1:5000/ in your browser.
 
