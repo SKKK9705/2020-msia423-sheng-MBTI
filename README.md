@@ -171,27 +171,40 @@ data.csv will be stored under data folder
 
 
 #### 2. Preprocess and generate class variables 
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti preprocess_data
+```
 data with class labels will be saved as class_data.csv under data folder 
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti preprocess_data`
 
 #### 3. Feature engineering  
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti generate_feature
+```
 dataset with class labels and new features will be saved as model_data.csv under data folder 
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti generate_feature`
+
 
 #### 4. Train models   
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model
+```
 Three models available: logistics regression(highest accuracy and default), random forest and decision tree. 
 dataset with class labels and new features will be saved as model_data.csv under data folder 
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti train_model`
 
-#### 5. Evaluate model performance and post process    
+
+#### 5. Evaluate model performance and post process 
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model
+```
 model performance will be written in evaluate.txt under models and post process (feature importance etc) in post_process folder under models 
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti evaluate_model`
+
 
 #### Run the entire pipeline
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti all-pipeline`
 
 #### Test 
-`docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test`
+```bash
+docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test
+```
 This command will run test_data_preparation.py, test_evalyuate_model.py and test_model.py
 
 
