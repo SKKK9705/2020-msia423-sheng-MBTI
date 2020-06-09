@@ -25,5 +25,22 @@ generate_feature:
     f5: img_per_comment
     f6: excl_per_comment
     f7: ellipsis_per_comment
+train_model:
+  split_data:
+    path: data/model_data.csv
+    features: ['words_per_comment','http_per_comment','music_per_comment','question_per_comment','img_per_comment','excl_per_comment','ellipsis_per_comment']
+    targets: ['I-E','N-S','T-F','J-P']
+    test_size: 0.4
+    random_state: 1
+  train:
+    method: logistic_regression
+evaluate_model:
+  evaluate_model:
+    xtestpath: data/xtest.csv
+  post_process:
+    features: ['words_per_comment','http_per_comment','music_per_comment','question_per_comment','img_per_comment','excl_per_comment','ellipsis_per_comment']
+
+
+
 
 

@@ -1,0 +1,48 @@
+AUC for ie is:
+0.5980785655595918
+
+confusion matrix for ie is:
+                 Predicted negative  Predicted positive
+Actual negative                2603                  21
+Actual positive                 829                  17
+
+accuracy for ie is:
+0.7550432276657061
+
+
+AUC for ns is:
+0.5615007650510234
+
+confusion matrix for ns is:
+                 Predicted negative  Predicted positive
+Actual negative                3032                   0
+Actual positive                 438                   0
+
+accuracy for ns is:
+0.8737752161383285
+
+
+AUC for jp is:
+0.5289232873628895
+
+confusion matrix for jp is:
+                 Predicted negative  Predicted positive
+Actual negative                   7                1378
+Actual positive                  12                2073
+
+accuracy for jp is:
+0.5994236311239193
+
+
+AUC for tf is:
+0.6629454071541908
+
+confusion matrix for tf is:
+                 Predicted negative  Predicted positive
+Actual negative                 820                 779
+Actual positive                 529                1342
+
+accuracy for tf is:
+0.6230547550432277
+
+

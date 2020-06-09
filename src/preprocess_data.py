@@ -21,10 +21,13 @@ def generate_class(df, target=None, response1=None, response2=None, response3=No
     :return: dataframe with four new columns
     """
 
+    # create maps to map from type letter to binary number
     map1 = {"I": 0, "E": 1}
     map2 = {"N": 0, "S": 1}
     map3 = {"T": 0, "F": 1}
     map4 = {"J": 0, "P": 1}
+
+    # convert a personality type to four classifiers
     df[response1] = df[target].astype(str).str[0]
     df[response1] = df[response1].map(map1)
     df[response2] = df[target].astype(str).str[1]
@@ -34,7 +37,7 @@ def generate_class(df, target=None, response1=None, response2=None, response3=No
     df[response4] = df[target].astype(str).str[3]
     df[response4] = df[response4].map(map4)
 
-    logger.info("binary class added to dataframe with column %s", response1, response2, response3, response4)
+    logger.info("four binary classes added to dataframe with column %s", str(response1) + str(response2) + str(response3) + str(response4))
     return df
 
 

@@ -22,8 +22,10 @@ def add_feature(path=None, target=None, f1=None, f2=None, f3=None, f4=None, f5=N
     :param f7: ellipsis per comment
     :return: a dataframe with features added
     """
-
+    # read in raw data
     df = pd.read_csv(path)
+
+    # generate new features based by taking the average of the occurances of punctuations and others
     df[f1] = df[target].apply(lambda x: len(x.split()) / 50)
     df[f2] = df[target].apply(lambda x: x.count('http') / 50)
     df[f3] = df[target].apply(lambda x: x.count('music') / 50)
@@ -39,7 +41,7 @@ def run_features(args):
     with open(args.config, 'r') as f:
         config = yaml.load(f, Loader=yaml.SafeLoader)
 
-    df = add_feature(**config['generate_features']['add_feature'])
+    df = add_feature(**config['generate_feature']['add_feature'])
     logger.info('dataframe for model created')
     df.to_csv(args.output, index=False)
     logger.info('data for model saved to %s', args.output)
