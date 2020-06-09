@@ -38,7 +38,7 @@ def index():
     """
 
     try:
-        user = db.session.query(User).order_by(User.id.desc()).limit(1).all()  #limit(app.config["MAX_ROWS_SHOW"]).all()
+        user = db.session.query(User).order_by(User.id.desc()).limit(1).all()  
         logger.debug("Index page accessed")
         return render_template('index1.html', users=user)
     except:
