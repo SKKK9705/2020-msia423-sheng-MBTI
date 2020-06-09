@@ -185,6 +185,7 @@ model performance will be written in evaluate.txt under models and post process 
 
 #### Test 
 `docker run --mount type=bind,source="$(pwd)",target=/app/ mbti test`
+This command will run test_data_preparation.py, test_evalyuate_model.py and test_model.py
 
 
 ### 2. Initialize the database 
